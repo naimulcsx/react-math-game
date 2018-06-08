@@ -35,7 +35,8 @@ export default class MultiplicationGame extends React.Component {
             message: null,
             gameOver: null,
             timeRemaining: 60,
-            gameRunning: false
+            gameRunning: false,
+            timeOut: null
         }
     }
 
@@ -159,14 +160,21 @@ export default class MultiplicationGame extends React.Component {
     }
 
     hideMessage() {
-        setTimeout(() => {
+        const timeOut = setTimeout(() => {
             this.setState(() => ({
                 message: null
             }));
         }, 1000);
+
+        this.setState(() => ({
+            timeOut: timeOut
+        }));
     }
 
     setMessage(msg) {
+        if (this.state.timeOut) 
+            clearTimeout(this.state.timeOut);
+
         this.setState(() => ({
             message: msg
         }));
@@ -221,7 +229,8 @@ export default class MultiplicationGame extends React.Component {
             currentAnswer: null,
             options: null,
             timeRemaining: 60,
-            gameRunning: false
+            gameRunning: false,
+            timeOut: null
         }));
     }
 
