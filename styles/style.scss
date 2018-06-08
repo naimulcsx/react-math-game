@@ -1,0 +1,210 @@
+$text-color: #fff;
+$theme-primary : #F4C613;
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: 'Open Sans Condensed', sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    font-size: 1.6rem;
+}
+
+*, *::after, *::before {
+    box-sizing: inherit;
+}
+
+
+.multiplicationGame {
+    background-image: linear-gradient(rgba(#313131, .7), rgba(#313131, .7)), url(http://images5.fanpop.com/image/photos/31100000/Math-Mania-math-31107557-2288-1617.jpg);
+    background-size: cover;
+    color: $text-color;
+    border: 10px solid $theme-primary;
+    height: 100vh;
+    padding: 4rem;
+}
+.question__box {
+    position: relative;
+    margin: 0 auto;
+    width: 100%;
+    height: 50%;
+    border: 10px solid $theme-primary;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &--score {
+        position: absolute;
+        right: 0;
+        top: 0;
+        background: #F4C613;
+        height: 40px;
+        width: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-transform: uppercase;
+    }
+
+    &--question {
+        span {
+            font-size: 12rem;
+            font-weight: 700;
+
+        }
+    }
+
+    &--message {
+        position: absolute;
+        top: 0;
+        left: 20px;
+        letter-spacing: 5px;
+        font-size: 2rem;
+        text-transform: uppercase;
+        font-weight: 700;
+    }
+
+    &--timer {
+        position: absolute;
+        bottom: 10px;
+        right: 20px;
+        letter-spacing: 5px;
+        font-size: 2rem;
+        text-transform: uppercase;
+        font-weight: 700;
+    }
+}
+
+.options__box {
+    margin-top: 4rem;
+    display: flex;
+    justify-content: space-between;
+
+    div {
+        flex-basis: 300px;
+        
+        height: 150px;
+        transition: all .3s;
+        text-align: center;
+
+        button {
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 100%;
+            width: 100%;
+            border: 0;
+            background-color : $theme-primary;
+
+            font-size: 8rem;
+            color: $text-color;
+
+            &:focus {
+                outline: 0;
+            }
+
+            &:active {
+                border: 1rem solid $theme-primary;
+                background: rgba(#212226, .5);
+            }
+        }
+    }
+}
+
+.StartGame__box {
+    margin-top: 4rem;
+    text-align: center;
+
+    button {
+        margin-top: 15px;
+        background: $theme-primary;
+        padding: 15px 30px;
+        color: $text-color;
+        font-size: 1.8rem;
+        transition: all .3s;
+        border: 0;
+
+        &:active {
+            background: rgba(#212226, .5);
+        }
+    }
+}
+
+.LevelsSelection__box {
+    width: 300px;
+    background: #212226;
+    border: 5px solid #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 30px;
+    color: #fff;
+    
+    span {
+        text-align: center;
+        cursor: pointer;
+    }
+
+    .easy {
+        background-color: #2ecc71;
+    }
+    .medium {
+        background-color: #f39c12;
+    }
+    .hard {
+        background-color: #e74c3c;
+    }
+}
+
+.FinalScore__box {
+    height: 200px;
+    width: 400px;
+    background: #212226;
+    border: 5px solid #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 30px;
+    color: #fff;
+    font-weight: 700;
+
+    &--closeButton {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: #e74c3c;
+        height: 40px;
+        width: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        
+        &:hover {
+            cursor: pointer;
+        }
+    }
+    
+    &--gameOver {
+        text-align: center;
+        margin: 0;
+        color: #e74c3c;
+    }
+    &--score {
+        text-align: center;
+        margin: 0;
+    }
+}
+
