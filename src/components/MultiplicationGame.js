@@ -219,7 +219,7 @@ export default class MultiplicationGame extends React.Component {
 
         }, 1000);
     }
-
+    
     resetGame() {
         this.setState(() => ({ 
             score: 0,
