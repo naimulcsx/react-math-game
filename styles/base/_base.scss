@@ -1,0 +1,17 @@
+$text-color: #fff;
+$theme-primary : #F4C613;
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: 'Open Sans Condensed', sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    font-size: 1.6rem;
+}
+
+*, *::after, *::before {
+    box-sizing: inherit;
+}

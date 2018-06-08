@@ -1,0 +1,30 @@
+.LevelsSelection__box {
+    width: 300px;
+    background: #212226;
+    border: 5px solid #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 30px;
+    color: #fff;
+    
+    span {
+        text-align: center;
+        cursor: pointer;
+    }
+
+    .easy {
+        background-color: #2ecc71;
+    }
+    .medium {
+        background-color: #f39c12;
+    }
+    .hard {
+        background-color: #e74c3c;
+    }
+}

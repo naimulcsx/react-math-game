@@ -1,0 +1,18 @@
+.StartGame__box {
+    margin-top: 4rem;
+    text-align: center;
+
+    button {
+        margin-top: 15px;
+        background: $theme-primary;
+        padding: 15px 30px;
+        color: $text-color;
+        font-size: 1.8rem;
+        transition: all .3s;
+        border: 0;
+
+        &:active {
+            background: rgba(#212226, .5);
+        }
+    }
+}

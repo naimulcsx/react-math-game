@@ -1,0 +1,51 @@
+.question__box {
+    position: relative;
+    margin: 0 auto;
+    width: 100%;
+    height: 50%;
+    border: 10px solid $theme-primary;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &--score {
+        position: absolute;
+        right: 0;
+        top: 0;
+        background: #F4C613;
+        height: 40px;
+        width: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-transform: uppercase;
+    }
+
+    &--question {
+        span {
+            font-size: 12rem;
+            font-weight: 700;
+
+        }
+    }
+
+    &--message {
+        position: absolute;
+        top: 0;
+        left: 20px;
+        letter-spacing: 5px;
+        font-size: 2rem;
+        text-transform: uppercase;
+        font-weight: 700;
+    }
+
+    &--timer {
+        position: absolute;
+        bottom: 10px;
+        right: 20px;
+        letter-spacing: 5px;
+        font-size: 2rem;
+        text-transform: uppercase;
+        font-weight: 700;
+    }
+}
