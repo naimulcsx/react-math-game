@@ -14,7 +14,10 @@ module.exports = {
             test: /\.js$/,
             exclude: /(node_modules|bower_components)/,
             use: {
-              loader: 'babel-loader'
+              loader: 'babel-loader',
+              options: {
+                presets: ["env", "react"]
+              }
             }
           },
           {
@@ -22,5 +25,11 @@ module.exports = {
             use: [ 'style-loader', 'css-loader', 'sass-loader' ]
           }
         ]
+    },
+    devtool: "cheap-module-eval-source-map",
+    devServer: {
+      contentBase: path.resolve(__dirname, "public"),
+      compress:true,
+      publicPath: "/scripts"
     }
 }
