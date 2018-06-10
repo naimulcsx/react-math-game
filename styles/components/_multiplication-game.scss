@@ -2,7 +2,14 @@
     background-image: url(https://raw.githubusercontent.com/imnaimul/ReactMultiplicationGame/master/public/images/bg.jpg);
     background-size: cover;
     color: $text-color;
+    padding: 4rem;
     border: 10px solid $theme-primary;
     height: 100vh;
-    padding: 4rem;
+    width: 100vw;
+    
+
+    @media (max-width: 576px) {
+        padding: 0rem;
+        border: 5px solid $theme-primary;
+    }
 }

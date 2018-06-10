@@ -5,10 +5,13 @@
 
     div {
         flex-basis: 300px;
-        
         height: 150px;
         transition: all .3s;
         text-align: center;
+
+        @media (max-width: 576px) {
+            height: 115px;
+        }
 
         button {
             position: relative;
@@ -22,12 +25,19 @@
             font-size: 8rem;
             color: $text-color;
 
+            @media (max-width: 576px) {
+                font-size: 3rem;
+            }
+
             &:focus {
                 outline: 0;
             }
 
             &:active {
-                border: 1rem solid $theme-primary;
+                @media (min-width: 576px) {
+                    border: 1rem solid $theme-primary;
+                }
+                
                 background: rgba(#212226, .5);
             }
         }

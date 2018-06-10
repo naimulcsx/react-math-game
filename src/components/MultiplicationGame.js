@@ -164,7 +164,7 @@ export default class MultiplicationGame extends React.Component {
             this.setState(() => ({
                 message: null
             }));
-        }, 1000);
+        }, 500);
 
         this.setState(() => ({
             timeOut: timeOut
