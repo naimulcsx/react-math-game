@@ -30,6 +30,7 @@ export default class MultiplicationGame extends React.Component {
             isLevelSelected: false,
             difficulty: null,
             question: {},
+            operation: null,
             currentAnswer: null,
             options: null,
             message: null,
@@ -54,7 +55,22 @@ export default class MultiplicationGame extends React.Component {
     }
 
     generateQuestion() {
-        let max;
+        let max, operation;
+
+        switch ( Math.floor(Math.random() * 4) ) {
+            case 0:
+                operation = "Addition";
+                break;
+            case 1:
+                operation = "Substruction";
+                break;
+            case 2:
+                operation = "Multiplication";
+                break;
+            case 3:
+                operation = "Division";
+                break;            
+        }
 
         switch(this.state.difficulty) {
             case "Easy" : max = 10; break;
@@ -68,7 +84,8 @@ export default class MultiplicationGame extends React.Component {
 
         this.setState(() => ({
             question : {x: x, y : y},
-            currentAnswer: x * y
+            operation: operation,
+            currentAnswer: this.operation(x, y, operation)
         }), 
         // after setting the state perform these actions
         () => {
@@ -78,6 +95,27 @@ export default class MultiplicationGame extends React.Component {
                 gameRunning: true
             }));
         });
+    }
+
+    operation(x, y, operation) {
+        switch(operation) {
+            case 'Addition':
+                return x + y;
+            
+            case 'Substruction':
+                return x - y;
+
+            case 'Multiplication':
+                return x * y;
+
+            case 'Division':
+                if (y == 1)
+                    return x / y;
+                else 
+                    // Since the toFixed method returns a string
+                    // we're explicitly converting it to a Number
+                    return Number( (x / y).toFixed(2) );
+        }
     }
 
     showLevelsSelection() {
@@ -99,7 +137,9 @@ export default class MultiplicationGame extends React.Component {
 
     generateOptions() {
         let opt_1, opt_2, opt_3, optArr = [];
-        let max, currentAnswer = this.state.currentAnswer;
+        let max, 
+            currentAnswer = this.state.currentAnswer,
+            operation = this.state.operation;
 
         switch(this.state.difficulty) {
             case "Easy" : max = 10; break;
@@ -108,13 +148,32 @@ export default class MultiplicationGame extends React.Component {
         }
 
         do {
-            opt_1 = this.randomNumber(1, max) * this.randomNumber(1, max);
-            opt_2 = this.randomNumber(1, max) * this.randomNumber(1, max);
-            opt_3 = this.randomNumber(1, max) * this.randomNumber(1, max);
-        } while (opt_1 == opt_2 && opt_1 == opt_3 && opt_1 == currentAnswer);
+            switch(operation) {
+                case "Addition":
+                    opt_1 = this.randomNumber(1, max) + this.randomNumber(1, max);
+                    opt_2 = this.randomNumber(1, max) + this.randomNumber(1, max);
+                    opt_3 = this.randomNumber(1, max) + this.randomNumber(1, max);
+                    break;
+                case "Substruction":
+                    opt_1 = this.randomNumber(1, max) - this.randomNumber(1, max);
+                    opt_2 = this.randomNumber(1, max) - this.randomNumber(1, max);
+                    opt_3 = this.randomNumber(1, max) - this.randomNumber(1, max);
+                    break;
+                case "Multiplication":
+                    opt_1 = this.randomNumber(1, max) * this.randomNumber(1, max);
+                    opt_2 = this.randomNumber(1, max) * this.randomNumber(1, max);
+                    opt_3 = this.randomNumber(1, max) * this.randomNumber(1, max);
+                    break;
+                case "Division":
+                    opt_1 = Number( (this.randomNumber(1, max) / this.randomNumber(1, max)).toFixed(2) );
+                    opt_2 = Number( (this.randomNumber(1, max) / this.randomNumber(1, max)).toFixed(2) );
+                    opt_3 = Number( (this.randomNumber(1, max) / this.randomNumber(1, max)).toFixed(2) );
+                    break;
+            }
+        } while (opt_1 === opt_2 || opt_2 === opt_3 || opt_3 === opt_1 || opt_1 === currentAnswer || opt_2 === currentAnswer || opt_3 === currentAnswer);
 
         optArr = [ opt_1, opt_2, opt_3, currentAnswer ];
-        // console.log (optArr);
+
         // suffling array
         optArr = this.shuffleOptions(optArr);
         // set State
@@ -134,7 +193,7 @@ export default class MultiplicationGame extends React.Component {
     
     // check answer
     checkAnswer(e) {
-        let option = e.target.textContent;
+        let option = Number(e.target.textContent);
         let answer = this.state.currentAnswer;
 
         if (option == answer) {
@@ -226,6 +285,7 @@ export default class MultiplicationGame extends React.Component {
             isLevelSelected: false, 
             question: {}, 
             difficulty: null, 
+            operation: null,
             currentAnswer: null,
             options: null,
             timeRemaining: 60,
@@ -256,6 +316,7 @@ export default class MultiplicationGame extends React.Component {
                     question = {this.state.question}
                     message = {this.state.message}
                     timeRemaining = {this.state.timeRemaining}
+                    operation = {this.state.operation}
                 />
                 
                 <Options options={this.state.options} checkAnswer={this.checkAnswer} />

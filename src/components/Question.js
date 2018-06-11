@@ -15,7 +15,12 @@ export default class Question extends React.Component {
 
                     <div className="question__box--question"> 
                         { this.props.question.x && <span className="x"> {this.props.question.x} </span> } 
-                        { this.props.question.x && <span className="operation"> x </span> } 
+                        { this.props.question.x && <span className="operation"> 
+                            {this.props.operation === "Addition" && "+"}
+                            {this.props.operation === "Multiplication" && "x"}
+                            {this.props.operation === "Substruction" && "-"}
+                            {this.props.operation === "Division" && "/"}
+                        </span> } 
                         { this.props.question.x && <span className="y"> {this.props.question.y} </span> } 
                     </div>
                 
