@@ -1,6 +1,4 @@
-# ReactMultiplicationGame
-
- This is a simple game I created when I was learning React. It was a great project to get my hands dirty with the React Basics.
+This is a simple game I created when I was learning React. It was a great project to get my hands dirty with the React Basics.
  
 ## Setup
 
